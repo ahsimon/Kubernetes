@@ -51,10 +51,7 @@ This is achieved by actually running a registry on minikube and then setting up 
 ```  
   minikube start
 ```
-Use the following commands to setup a local registry for minikube:
-```
-docker run -d -p 5000:5000 --restart=always --name registry registry:2
-```
+
 Create a registry (a replication-controller and a service) and create a proxy to make sure the minikube VM’s 5000 is proxied to the registry service’s 5000
 ```
   kubectl create -f kube-registry.yaml
