@@ -71,7 +71,7 @@ awk '{print $1;}') 5000:5000
 After this, from the host ```curl -iv http://localhost:5000/v2/_catalog ``` should return a valid response from the docker registry running on minikube!
 
 
-Non-linux people needs to map docker-machine’s 5000 to the host’s 5000 (no garantie)
+Non-linux people needs to map docker-machine’s 5000 to the host’s 5000 
 
 ```
 ssh -i ~/.docker/machine/machines/default/id_rsa \
