@@ -10,6 +10,8 @@ Future versions will be built using the popular service Mesh Istio - Kubernetes.
 
 
 
+## Architecture
+
 
 **Apigee Edge Microgateway**  hybrid Cloud API management solution that:
 
@@ -24,7 +26,7 @@ The  Kubernetes  architecture is a system for automating deployment, scaling, an
 
 
 
-## Architecture
+
 
 
 
@@ -233,7 +235,7 @@ In Resources, click +API Proxy
 
       Developer: If you created a test developer, select it.
 
-      Or, you can use any existing developer for the purpose of this tutorial.
+
 
       Credentials:
       Select Expiration: Never.
