@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: buzon-getall
+  labels:
+    app: buzon-getall
+spec:
+  restartPolicy: Never
+  containers:
+  - name: buzon-getall
+    image: localhost:5000/buzon-getall
+    ports:
+      - containerPort: 5552
+    volumeMounts:  
+    - name: apigee-microgateway-config 
+      mountPath: /opt/apigee/microgateway 
+      readOnly: true
+      
+  - name: edgemicro
+    image: localhost:5000/edgemicro 
+    imagePullPolicy: Always
+    ports:
+      - containerPort: 8000
+    volumeMounts:  
+    - name: apigee-microgateway-config 
+      mountPath: /opt/apigee/microgateway 
+      readOnly: true
+    - name: apigee-microgateway-default-config
+      mountPath: /root/.edgemicro/configmap
+
+  volumes: 
+  - name: apigee-microgateway-config 
+    secret:
+      secretName: apigee-microgateway-buzon-dev-config
+  - name: apigee-microgateway-default-config
+    configMap:
+      name: apigee-microgateway-default-config

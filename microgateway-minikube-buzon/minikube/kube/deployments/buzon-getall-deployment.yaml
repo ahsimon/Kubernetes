@@ -1,0 +1,44 @@
+apiVersion: apps/v1beta1 # for versions before 1.6.0 use extensions/v1beta1
+kind: Deployment
+metadata:
+  name: buzon-getall-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  buzon-getall
+    spec:
+      containers:
+      - name: buzon-getall
+        image: localhost:5000/buzon-getall
+        ports:
+          - containerPort: 5552
+        volumeMounts:  
+        - name: apigee-microgateway-config 
+          mountPath: /opt/apigee/microgateway 
+          readOnly: true
+          
+      - name: edgemicro
+        image: localhost:5000/edgemicro
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8000
+        volumeMounts:  
+        - name: apigee-microgateway-config 
+          mountPath: /opt/apigee/microgateway 
+          readOnly: true
+        - name: apigee-microgateway-default-config
+          mountPath: /root/.edgemicro/configmap
+
+      volumes: 
+      - name: apigee-microgateway-config 
+        secret:
+          secretName: apigee-microgateway-buzon-dev-config
+      - name: apigee-microgateway-default-config
+        configMap:
+          name: apigee-microgateway-default-config
+         
+
+
+     

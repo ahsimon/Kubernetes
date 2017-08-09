@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: buzon-getall-svc-nodeport
+spec:
+  type: NodePort
+  selector:
+    app: buzon-getall
+  ports:
+    - protocol: TCP
+      port : 80  
+      targetPort: 8000
+      nodePort: 30552
