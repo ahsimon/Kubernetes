@@ -5,7 +5,7 @@
 
 The aim behind this project is setup and running an hypothetical Microservice  application using Kubernetes and Apigee Edge Microgateway.
 
-Future versions will be built using the popular service Mesh Istio - Kubernetes.  
+Future versions will be built using  Istio - Kubernetes.  
 
 
 
@@ -251,7 +251,7 @@ In Resources, click +API Proxy
 
 ### Create pods and services in minikube
 At second part we create pods and services with the Apigee microgateway
-* Before to continue please verify, if addon-manager, ingress are enabled in Minikube.
+* Before to continue please verify if addon-manager, ingress are both enabled in Minikube.
 
 ```
 minikube addons list
